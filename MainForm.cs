@@ -19,24 +19,30 @@ namespace Snake
         public MainForm()
         {
             InitializeComponent();
-            ClientSize = new Size((int)fieldSize * GridSquareSize, (int)fieldSize * GridSquareSize); ;
+            ClientSize = new Size((int)fieldSize * GridSquareSize, (int)fieldSize * GridSquareSize);
+            Console.WriteLine(this.DoubleBuffered);
+            this.DoubleBuffered = true;
+            MainPanel.BackColor = Color.Black;
         }
 
         private void MainPanel_Paint(object sender, PaintEventArgs e)
         {
+            MainPanel.SuspendLayout();
+            RepaintTimer.Enabled = false;
             Graphics g = e.Graphics;
-        //    g.FillRectangle(new SolidBrush(Color.Black), new RectangleF(0, 0, MainPanel.Width, MainPanel.Height));
-            Brush brush = new SolidBrush(Color.Red);
-            g.FillRectangle(brush, new RectangleF(food.x * GridSquareSize, food.y * GridSquareSize, GridSquareSize, GridSquareSize));
+            
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+            
+            g.FillRectangle(new SolidBrush(Color.Red), new RectangleF(food.x * GridSquareSize, food.y * GridSquareSize, GridSquareSize, GridSquareSize));
 
-            brush = new SolidBrush(Color.Blue);
-            g.FillRectangle(brush, new RectangleF(snake.body[0].x * GridSquareSize, snake.body[0].y * GridSquareSize, GridSquareSize, GridSquareSize));
-
-            brush = new SolidBrush(Color.Green);
+            g.FillRectangle(new SolidBrush(Color.Blue), new RectangleF(snake.body[0].x * GridSquareSize, snake.body[0].y * GridSquareSize, GridSquareSize, GridSquareSize));
             for (int i = 1; i < snake.body.Count; i++)
             {
-                g.FillRectangle(brush, new RectangleF(snake.body[i].x * GridSquareSize, snake.body[i].y * GridSquareSize, GridSquareSize, GridSquareSize));
+                g.FillRectangle(new SolidBrush(Color.Green), new RectangleF(snake.body[i].x * GridSquareSize, snake.body[i].y * GridSquareSize, GridSquareSize, GridSquareSize));
             }
+
+            MainPanel.ResumeLayout();
+            RepaintTimer.Enabled = true;
         }
 
         private void GameCycle()
@@ -87,15 +93,16 @@ namespace Snake
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            DoubleBuffered = true;
             GameTimer.Interval = updateDelay;
             GameTimer.Start();
-            RepaintTimer.Interval = updateDelay / 10;
+            RepaintTimer.Interval = updateDelay;
             RepaintTimer.Start();
         }
 
         private void RepaintTimer_Tick(object sender, EventArgs e)
         {
-            Refresh();
+             Refresh();
         }
     }
 }
