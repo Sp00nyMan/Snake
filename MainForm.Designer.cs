@@ -46,7 +46,7 @@
             // 
             // GameTimer
             // 
-            this.GameTimer.Tick += new System.EventHandler(this.timer1_Tick);
+            this.GameTimer.Tick += new System.EventHandler(this.GameTimer_Tick);
             // 
             // RepaintTimer
             // 
