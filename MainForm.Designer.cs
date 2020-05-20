@@ -28,43 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.MainPanel = new System.Windows.Forms.Panel();
-            this.GameTimer = new System.Windows.Forms.Timer(this.components);
-            this.RepaintTimer = new System.Windows.Forms.Timer(this.components);
-            this.SuspendLayout();
-            // 
-            // MainPanel
-            // 
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(0, 0);
-            this.MainPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(300, 270);
-            this.MainPanel.TabIndex = 0;
-            this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
-            // 
-            // GameTimer
-            // 
-            this.GameTimer.Tick += new System.EventHandler(this.GameTimer_Tick);
-            // 
-            // RepaintTimer
-            // 
-            this.RepaintTimer.Tick += new System.EventHandler(this.RepaintTimer_Tick);
-            // 
-            // MainForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(300, 270);
-            this.Controls.Add(this.MainPanel);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "MainForm";
-            this.Text = "Snake";
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
-            this.ResumeLayout(false);
+			this.components = new System.ComponentModel.Container();
+			this.MainPanel = new System.Windows.Forms.Panel();
+			this.GameTimer = new System.Windows.Forms.Timer(this.components);
+			this.RepaintTimer = new System.Windows.Forms.Timer(this.components);
+			this.SuspendLayout();
+			// 
+			// MainPanel
+			// 
+			this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.MainPanel.Location = new System.Drawing.Point(0, 0);
+			this.MainPanel.Margin = new System.Windows.Forms.Padding(2);
+			this.MainPanel.Name = "MainPanel";
+			this.MainPanel.Size = new System.Drawing.Size(300, 270);
+			this.MainPanel.TabIndex = 0;
+			this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
+			// 
+			// GameTimer
+			// 
+			this.GameTimer.Tick += new System.EventHandler(this.GameTimer_Tick);
+			// 
+			// RepaintTimer
+			// 
+			this.RepaintTimer.Tick += new System.EventHandler(this.RepaintTimer_Tick);
+			// 
+			// MainForm
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.ClientSize = new System.Drawing.Size(300, 270);
+			this.Controls.Add(this.MainPanel);
+			this.Margin = new System.Windows.Forms.Padding(2);
+			this.Name = "MainForm";
+			this.Text = "Snake";
+			this.Load += new System.EventHandler(this.MainForm_Load);
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
+			this.ResumeLayout(false);
 
         }
 

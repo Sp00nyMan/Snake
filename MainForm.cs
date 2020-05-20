@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
 using Snake.Snake;
 
@@ -8,7 +9,7 @@ namespace Snake
     public partial class MainForm : Form
     {
         public static readonly uint FieldSize = 20;
-        private static readonly int GridSquareSize = 30;
+        private static readonly int GridSquareSize = 35;
         private static readonly int updateDelay = GridSquareSize * 3;
 
         private Snake.Snake snake = new Snake.Snake(FieldSize);
@@ -22,21 +23,21 @@ namespace Snake
 
             StartPosition = FormStartPosition.WindowsDefaultLocation;
            
-            MainPanel.BackColor = Color.Black;
+            MainPanel.BackColor = Color.White;
         }
 
         private void MainPanel_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-/*            for (int i = 0; i < FieldSize; i++)
+            for (int i = 0; i < FieldSize; i++)
             {
                 for (int j = 0; j < FieldSize; j++)
                 {
-                    g.DrawRectangle(new Pen(Color.White),
+                    g.DrawRectangle(new Pen(Color.Black),
                         new Rectangle(i * GridSquareSize, j * GridSquareSize, GridSquareSize, GridSquareSize));
                 }
             }
-*/
+
             g.FillRectangle(new SolidBrush(Color.Red), new RectangleF(food.x * GridSquareSize, food.y * GridSquareSize, GridSquareSize, GridSquareSize));
 
             for (int i = snake.body.Count - 1; i > 0; i--)
@@ -101,8 +102,9 @@ namespace Snake
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+	        typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, MainPanel, new object[] { true });
             GameTimer.Interval = updateDelay;
-            RepaintTimer.Interval = updateDelay;
+            RepaintTimer.Interval = updateDelay / 4;
             GameTimer.Start();
             RepaintTimer.Start();
         }
